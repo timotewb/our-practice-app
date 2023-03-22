@@ -1,0 +1,34 @@
+<!-- templates/base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Media Library{% endblock %}</title>
+
+  {% block css %}
+  {% endblock %}
+  {% block js %}
+  {% endblock %}
+</head>
+
+<body id="page-top">
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <!-- Main Content -->
+      <div id="content">
+        <!-- <main id="main"> -->
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+        {% block content %}
+        {% endblock %}
+        <!-- </main> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
