@@ -1,9 +1,29 @@
 
 {% extends 'base.html' %}
 
-
 {% block title %}Home{% endblock %}
-
 {% block content %}
-hello world
+<h1>My First JavaScript Animation</h1>
+<p><button onclick="myMove()">Click Me</button></p> 
+<div id ="container">
+    <div id="animation"></div>
+</div>
+<script>
+    function myMove() {
+      let id = null;
+      const elem = document.getElementById("animate");   
+      let pos = 0;
+      clearInterval(id);
+      id = setInterval(frame, 5);
+      function frame() {
+        if (pos == 350) {
+          clearInterval(id);
+        } else {
+          pos++; 
+          elem.style.top = pos + "px"; 
+          elem.style.left = pos + "px"; 
+        }
+      }
+    }
+    </script>
 {% endblock %}
