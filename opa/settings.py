@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'opa.apps.site_main',
+    'opa.apps.main',
+    'opa.apps.accounts',
+    'crispy_forms',
+    'crispy_bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'opa.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'opa.urls'
@@ -94,7 +98,6 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-print(DATABASES)
 
 
 # Password validation
@@ -131,10 +134,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_URL = '/accounts/login'
+LOGIN_EXEMPT_URLS = (
+    r'^accounts/logout/$',
+    r'^admin/login/$',
+)

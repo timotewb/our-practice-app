@@ -1,0 +1,34 @@
+{% extends 'main/base.html' %}
+
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/go-debug.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<h1>Test Page</h1>
+
+<!-- The DIV for a Diagram needs an explicit size or else we will not see anything.
+     In this case we also add a background color so we can see that area. -->
+<div id="myDiagramDiv" style="width:400px; height:150px; background-color: #DAE4E4;"></div>
+
+<script>
+// You can specify options in the Diagram's second argument
+// These options not only include Diagram properties, but sub-properties, too.
+const myDiagram =
+  new go.Diagram("myDiagramDiv",
+    { // enable Ctrl-Z to undo and Ctrl-Y to redo
+      "undoManager.isEnabled": true
+    });
+
+myDiagram.model = new go.Model(
+  [ // for each object in this Array, the Diagram creates a Node to represent it
+    { key: "Alpha" },
+    { key: "Beta" },
+    { key: "Gamma" }
+  ]);
+</script>
+{% endblock %}
